@@ -1,0 +1,79 @@
+//
+// Root
+//
+
+// Light mode
+@include color-mode(light) {
+  // Page bg
+  --#{$prefix}page-bg: #{$page-bg};
+
+  // App blank bg color
+  --#{$prefix}app-blank-bg: #{$app-blank-bg-color};
+
+  // Header
+  --#{$prefix}header-default-bg-color: #{get($header-config, default, bg-color)};
+  --#{$prefix}header-fixed-bg-color: #{get($header-config, fixed, bg-color)};
+  --#{$prefix}header-fixed-box-shadow: #{get($header-config, fixed, box-shadow)};
+
+  // Aside
+  --#{$prefix}aside-box-shadow: #{get($header-config, box-shadow)};
+}
+
+// Dark mode
+@include color-mode(dark) {
+  // Page bg
+  --#{$prefix}page-bg: #{$page-bg-dark};
+
+  // App blank bg color
+  --#{$prefix}app-blank-bg: #{$app-blank-bg-color-dark};
+
+  // Header
+  --#{$prefix}header-default-bg-color: #{get($header-config, default, bg-color-dark)};
+  --#{$prefix}header-fixed-bg-color: #{get($header-config, fixed, bg-color-dark)};
+  --#{$prefix}header-fixed-box-shadow: #{get($header-config, fixed, box-shadow-dark)};
+
+  // Aside
+  --#{$prefix}aside-box-shadow: #{get($header-config, box-shadow-dark)};
+}
+
+.splash-screen-cgaas {
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: Inter, Helvetica, 'sans-serif';
+  background-color: #ffffff;
+  color: #5e6278;
+  line-height: 1;
+  font-size: 14px;
+  font-weight: 400;
+
+  span {
+    color: #5e6278;
+    transition: none !important;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img {
+    margin-left: calc(100vw - 100%);
+    margin-bottom: 30px;
+    height: 230px !important;
+  }
+
+  &.dark-theme {
+    background-color: #151521;
+    color: #ffffff;
+
+    .dark-logo {
+      display: block;
+    }
+
+    .light-logo {
+      display: none;
+    }
+  }
+}

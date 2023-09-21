@@ -1,0 +1,70 @@
+// React vendors
+@import '~socicon/css/socicon.css';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import '~line-awesome/dist/line-awesome/css/line-awesome.css';
+@import '~prism-themes/themes/prism-shades-of-purple.css';
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+@import '~animate.css/animate.css';
+@import '~nouislider/dist/nouislider.css';
+
+#root {
+  display: contents;
+}
+
+
+.loading-text-gateway-config span[class^="dot-"]{
+  opacity: 0;
+}
+.dot-one{
+  animation: dot-one 2s infinite linear
+}
+.dot-two{
+  animation: dot-two 2s infinite linear
+}
+.dot-three{
+  animation: dot-three 2s infinite linear
+}
+@keyframes dot-one{
+  0%{
+    opacity: 0;
+  }
+  15%{
+    opacity: 0;
+  }
+  25%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+@keyframes dot-two{
+  0%{
+    opacity: 0;
+  }
+  25%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+@keyframes dot-three{
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 0;
+  }
+  75%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 1;
+  }
+}
