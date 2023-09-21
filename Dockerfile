@@ -5,10 +5,10 @@ FROM node:alpine AS development
 ENV NODE_ENV development
 
 # Setting up the work directory
-WORKDIR /cgaas-ui
+WORKDIR /cgaas-ui-2
 
 # Installing dependencies
-COPY ./package.json /cgaas-ui
+COPY ./package.json /cgaas-ui-2
 RUN npm install 
 
 # Copying all the files in our project
