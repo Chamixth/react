@@ -30,3 +30,4 @@ EXPOSE 80
 
 # Start Nginx as a daemon when the container is run
 CMD ["nginx", "-g", "daemon off;"]
+
