@@ -1,12 +1,17 @@
-# Stage 0, "build-stage", based on Node.js, to build and compile the frontend
-FROM tiangolo/node-frontend:10 as build-stage
-WORKDIR /cgaas
-COPY package*.json /cgaas/
-RUN npm install
-COPY ./ /cgaas/
+FROM node:alpine AS development
+
+WORKDIR /app
+COPY package.json package-lock.json ./
+COPY public/ public/
+COPY src/ src/
+RUN npm ci
 RUN npm run build
-# Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
-FROM nginx:latest
-COPY --from=build-stage /cgaas/build/ /usr/share/nginx/html
-# Copy the default nginx.conf provided by tiangolo/node-frontend
-COPY --from=build-stage /nginx.conf /etc/nginx/conf.d/cgaas.chamith.cgaas.ai.conf
+
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/build /usr/share/nginx/html
+RUN touch /var/run/nginx.pid
+RUN chown -R nginx:nginx /var/run/nginx.pid /usr/share/nginx/html /var/cache/nginx /var/log/nginx /etc/nginx/conf.d
+USER nginx
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
