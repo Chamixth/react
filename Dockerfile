@@ -16,18 +16,17 @@ RUN npm install
 # Copy all the files in your project to the container
 COPY . .
 
-# Start your Node.js application when the container is run
-CMD ["npm", "start"]
+# Build the React app
+RUN npm run build
 
 # Stage for Nginx
 FROM nginx:alpine AS production
 
 # Copy the built React app from the Node.js development stage to Nginx's web directory
-COPY --from=development /build /usr/share/nginx/html
+COPY --from=development /cgaas-ui-2/build /usr/share/nginx/html
 
 # Expose port 80 for Nginx
 EXPOSE 80
 
 # Start Nginx as a daemon when the container is run
 CMD ["nginx", "-g", "daemon off;"]
-
