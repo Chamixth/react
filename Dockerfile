@@ -1,14 +1,17 @@
-# Stage 1: Build the React app
-FROM node:14.17.6-alpine AS build
+# This image won't be shipped with our final container
+# we only use it to compile our app.
+FROM node:alpine as build
+ENV PATH /app/node_modules/.bin:$PATH
 WORKDIR /app
-COPY package*.json ./
+COPY . /app
 RUN npm install
-COPY . .
 RUN npm run build
 
-# Stage 2: Serve the React app with NGINX
-FROM nginx:1.21.3-alpine
+# production image using nginx and including our
+# compiled app only. This is called multi-stage builds
+FROM nginx:1.16.0-alpine
 COPY --from=build /app/build /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx/nginx.conf /etc/nginx/conf.d
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
