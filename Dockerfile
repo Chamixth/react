@@ -1,19 +1,12 @@
-# Fetching the latest node image on apline linux
-FROM node:alpine AS development
-
-# Declaring env
-ENV NODE_ENV development
-
-# Setting up the work directory
-WORKDIR /cgaas-ui
-
-# Installing dependencies
-COPY ./package.json /cgaas-ui
-RUN npm install 
-
-# Copying all the files in our project
-COPY . .
-
-# Starting our application
-CMD npm start
-EXPOSE 80
+# Stage 0, "build-stage", based on Node.js, to build and compile the frontend
+FROM tiangolo/node-frontend:10 as build-stage
+WORKDIR /cgaas
+COPY package*.json /cgaas/
+RUN npm install
+COPY ./ /cgaas/
+RUN npm run build
+# Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
+FROM nginx:latest
+COPY --from=build-stage /cgaas/build/ /usr/share/nginx/html
+# Copy the default nginx.conf provided by tiangolo/node-frontend
+COPY --from=build-stage /nginx.conf /etc/nginx/conf.d/cgaas.chamith.cgaas.ai.conf
