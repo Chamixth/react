@@ -1,32 +1,19 @@
-# Use the official Node.js image based on Alpine Linux as the base image
+# Fetching the latest node image on apline linux
 FROM node:alpine AS development
 
-# Set the environment variable to development
+# Declaring env
 ENV NODE_ENV development
 
-# Set the working directory within the container
-WORKDIR /cgaas-ui-2
+# Setting up the work directory
+WORKDIR /cgaas-ui
 
-# Copy package.json and package-lock.json to the container
-COPY package*.json ./
+# Installing dependencies
+COPY ./package.json /cgaas-ui
+RUN npm install 
 
-# Install application dependencies
-RUN npm install
-
-# Copy all the files in your project to the container
+# Copying all the files in our project
 COPY . .
 
-# Build the React app
-RUN npm run build
-
-# Stage for Nginx
-FROM nginx:alpine AS production
-
-# Copy the built React app from the Node.js development stage to Nginx's web directory
-COPY --from=development /cgaas-ui-2/build /usr/share/nginx/html
-
-# Expose port 80 for Nginx
+# Starting our application
+CMD npm start
 EXPOSE 80
-
-# Start Nginx as a daemon when the container is run
-CMD ["nginx", "-g", "daemon off;"]
