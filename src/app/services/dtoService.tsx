@@ -29,7 +29,7 @@ const getAllDtosByWorkspaceId = (workspaceId: string, userId: string): Promise<D
 
   const deleteDto = (dto:Dto): Promise<any>=>{
     return cgaasManifest
-      .delete('Delete/dto?'+"workspaceId="+dto.workspaceId+"&appId="+dto.appId+"&dtoId="+dto.dtoId+"&userId="+dto.userId)
+      .delete('Delete/dto?'+"workspaceId="+dto.workspaceId+"&appId="+dto.appId+"&dtoId="+dto.dtoId)
       .then((response:AxiosResponse<any>)=>response.data);
   }
 

@@ -24,7 +24,7 @@ const getAllRelationships = (workspaceId : string, appId :string, userId:string)
 
 const deleteRelationship = (relationship:Relationship): Promise<any>=>{
   return cgaasManifest
-    .delete('Delete/relationship?'+"workspaceId="+relationship.workspaceId+"&relationshipId="+relationship.relationshipId+"&userId="+relationship.userId+"&appId="+relationship.appId)
+    .delete('Delete/relationship?'+"workspaceId="+relationship.workspaceId+"&relationshipId="+relationship.relationshipId)
     .then((response:AxiosResponse<any>)=>response.data);
 }
 

@@ -2,7 +2,7 @@ import axios from 'axios';
 const API_URL = process.env.CGAAS_API_URL;
 
 export default axios.create({
-	baseURL: 'http://localhost:9090/CGaaS-Manifest/api/' ,
+	baseURL: 'https://manifest.cgaas.ai/CGaaS-Manifest/api/' ,
 	headers: {
 		'Content-type': 'application/json',
 		'Access-Control-Allow-Origin': '*',

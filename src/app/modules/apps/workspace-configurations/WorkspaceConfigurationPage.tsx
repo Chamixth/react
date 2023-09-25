@@ -15,8 +15,6 @@ import Dtos from '../application-configurations/components/model-configurations/
 import {Gateway} from './components/Gateway'
 import {FrontendDetails} from './components/Front-End/Frontend-Details'
 import Authentication from './components/authentication_configuration/Authentication'
-import RolesPage from './components/Roles/RolesPage'
-import { ViewRole } from './components/Roles/components/ViewRole'
 
 const profileBreadCrumbs: Array<PageLink> = [
   {
@@ -123,16 +121,6 @@ const WorkspaceConfigurationPage = () => {
             </>
           }
         />
-        <Route
-          path='roles'
-          element={
-            <>
-              <PageTitle breadcrumbs={profileBreadCrumbs}>Roles</PageTitle>
-              <RolesPage workspaceData={Workspace} />
-            </>
-          }
-        />
-       
         <Route
           path='logger'
           element={

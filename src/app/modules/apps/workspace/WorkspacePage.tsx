@@ -11,28 +11,12 @@ import ApplicationConfigurationPage from '../application-configurations/Applicat
 import {WorkspaceEmptyModal} from './components/WorkspaceEmptyModal'
 import {useAuth0} from '@auth0/auth0-react'
 import { useGLoading } from '../../../../_metronic/layout/core/LoadingProvider'
-import { ViewRole } from '../workspace-configurations/components/Roles/components/ViewRole'
 
 const workspaceBreadCrumbs: Array<PageLink> = [
   {
     title: 'CGaaS',
     path: '/workspaces',
     isSeparator: false,
-    isActive: false,
-  },
-]
-
-const profileBreadCrumbs: Array<PageLink> = [
-  {
-    title: 'Workspaces',
-    path: 'workspaces',
-    isSeparator: false,
-    isActive: false,
-  },
-  {
-    title: '',
-    path: '',
-    isSeparator: true,
     isActive: false,
   },
 ]
@@ -89,24 +73,6 @@ const WorkspacePage = ({setWorkspaceData, workspaceData}) => {
             <>
               <PageTitle breadcrumbs={workspaceBreadCrumbs}>AppConfig</PageTitle>
               <ApplicationConfigurationPage />
-            </>
-          }
-        />
-        <Route
-          path='configure/:workspaceId/view/:applicationId/*'
-          element={
-            <>
-              <PageTitle breadcrumbs={workspaceBreadCrumbs}>AppConfig</PageTitle>
-              <ApplicationConfigurationPage />
-            </>
-          }
-        />
-         <Route
-          path='configure/:workspaceId/manage/roles/:roleId'
-          element={
-            <>
-              <PageTitle breadcrumbs={profileBreadCrumbs}>DtoRoles</PageTitle>
-              <ViewRole workspaceData={workspaceData} />
             </>
           }
         />

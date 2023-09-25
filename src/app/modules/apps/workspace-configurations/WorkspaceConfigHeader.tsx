@@ -241,19 +241,6 @@ const WorkspaceConfigHeader = ({workspaceData}: Props) => {
                 Authentication
               </Link>
             </li>
-            <li className='nav-item'>
-              <Link
-                className={
-                  `nav-link text-active-primary me-6 ` +
-                  (location.pathname ===
-                    `/workspaces/configure/${workspaceData.workspaceId}/manage/roles` &&
-                    'active')
-                }
-                to={`/workspaces/configure/${workspaceData.workspaceId}/manage/roles`}
-              >
-                Roles
-              </Link>
-            </li>
           </ul>
         </div>
       </div>

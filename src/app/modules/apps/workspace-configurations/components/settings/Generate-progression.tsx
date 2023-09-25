@@ -5,7 +5,6 @@ import {toAbsoluteUrl} from '../../../../../../_metronic/helpers'
 import {useParams} from 'react-router'
 import {generateApplication} from '../../../../../services/applicationService'
 import Swal from 'sweetalert2'
-import { useAuth0 } from '@auth0/auth0-react'
 
 const override: CSSProperties = {
   display: 'block',
@@ -48,7 +47,6 @@ const ChangingIcon: React.FC<ChangingIconProps & { isGenerate: boolean }> = ({
 function GenerateProgression() {
   const [loading, setLoading] = useState(false)
   const [isGenerate, setIsGenerate] = useState(false)
-  const { user, isAuthenticated } = useAuth0();
 
   useEffect(() => {
     // Set a timeout to hide the loader after 10 seconds
@@ -65,8 +63,7 @@ function GenerateProgression() {
   const {applicationId} = useParams()
 
   const generateApp = () => {
-    const userId = user?.sub;
-    generateApplication({appId: applicationId,userId:userId || ''})
+    generateApplication({appId: applicationId})
       .then((data) => {
         console.log(data)
         setLoading(false) // Set loading to false after data is received

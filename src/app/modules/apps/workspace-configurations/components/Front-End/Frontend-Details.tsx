@@ -33,7 +33,7 @@ const FrontendDetails: React.FC<Props> = (props) => {
   const [isGateway, setIsGateway] = useState<string>()
   const [selectedImageUrl, setSelectedImageUrl] = useState<string | null>(null)
   const { user, isAuthenticated } = useAuth0();
-  const [isAuthConfigured, setIsAuthConfigured] = useState(true)
+  const [isAuthConfigured, setIsAuthConfigured] = useState(false)
   const [showCrop, setShowCrop] = useState(false)
 
   const fetchFrontEnd = async () => {
@@ -561,24 +561,24 @@ const FrontendDetails: React.FC<Props> = (props) => {
                   type='button'
                   className='btn btn-lg btn-light-danger me-8'
                   disabled={!frontEndConfigured}
-                  onClick={()=>{
-                    if (isAuthConfigured){
+                 onClick={()=>{
+                    //if (isAuthConfigured){
                       generate()
-                    }else {
-                      Swal.fire({
-                        text: 'Please configure an authentication before generating UI',
+                    //}else {
+                    //  Swal.fire({
+                    //    text: 'Please configure an authentication before generating UI',
                 
-                        icon: 'warning',
-                        showCancelButton: !0,
-                        buttonsStyling: !1,
-                        confirmButtonText: 'Ok',
-                        cancelButtonText: 'Close',
-                        customClass: {
-                          confirmButton: 'btn fw-bold btn-danger',
-                          cancelButton: 'btn fw-bold btn-active-light-primary',
-                        },
-                      })
-                    }
+                    //    icon: 'warning',
+                    //    showCancelButton: !0,
+                    //    buttonsStyling: !1,
+                    //    confirmButtonText: 'Ok',
+                    //    cancelButtonText: 'Close',
+                    //    customClass: {
+                    //      confirmButton: 'btn fw-bold btn-danger',
+                    //      cancelButton: 'btn fw-bold btn-active-light-primary',
+                    //    },
+                    //  })
+                    //}
                   }}
                 >
                   Generate Frontend

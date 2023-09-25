@@ -94,9 +94,9 @@ const CreateFieldModal = ({showCreatefield, handleCloseModal, dto, isUpdate, ind
       if (isUpdate) {
         try {
           setIsSubmitting(true)
-          const booleanIsEncrypted = isEncrypt === 'True' ? true : false
-          const booleanIsUnique = isUnique === 'True' ? true : false
-          const booleanIsRequired = isRequire === 'True' ? true : false
+          const booleanIsEncrypted = isEncrypt === 'true' ? true : false
+          const booleanIsUnique = isUnique === 'true' ? true : false
+          const booleanIsRequired = isRequire === 'true' ? true : false
           const updatedBooleanData = {
             ...data,
             isEncrypted: booleanIsEncrypted,
@@ -121,9 +121,9 @@ const CreateFieldModal = ({showCreatefield, handleCloseModal, dto, isUpdate, ind
           setIsSubmitting(false)
         }
       } else {
-        const booleanIsEncrypted = isEncrypt === 'True' ? true : false
-        const booleanIsUnique = isUnique === 'True' ? true : false
-        const booleanIsRequired = isRequire === 'True' ? true : false
+        const booleanIsEncrypted = isEncrypt === 'true' ? true : false
+        const booleanIsUnique = isUnique === 'true' ? true : false
+        const booleanIsRequired = isRequire === 'true' ? true : false
         const updatedBooleanData = {
           ...data,
           isEncrypted: booleanIsEncrypted,
@@ -242,8 +242,8 @@ const CreateFieldModal = ({showCreatefield, handleCloseModal, dto, isUpdate, ind
                       name='is-required'
                       instanceId='is-required-select'
                       options={[
-                        {value: 'True', label: 'Required'},
-                        {value: 'False', label: 'Not required'},
+                        {value: 'true', label: 'Required'},
+                        {value: 'false', label: 'Not required'},
                       ]}
                       value={{
                         value: isRequire,
@@ -278,11 +278,11 @@ const CreateFieldModal = ({showCreatefield, handleCloseModal, dto, isUpdate, ind
                     {isRequire === undefined && hasError && (
                       <div className='fv-plugins-message-container'>
                         <div
-                          data-field='data-type'
+                          data-field='is-required'
                           data-validator='notEmpty'
                           className='fv-help-block'
                         >
-                          Data Type is required
+                          Is required field is required
                         </div>
                       </div>
                     )}
@@ -529,8 +529,8 @@ const CreateFieldModal = ({showCreatefield, handleCloseModal, dto, isUpdate, ind
                       name='is-encrypted'
                       instanceId='is-encrypted-select'
                       options={[
-                        {value: 'True', label: 'Encrypted'},
-                        {value: 'False', label: 'Not encrypted'},
+                        {value: 'true', label: 'Encrypted'},
+                        {value: 'false', label: 'Not encrypted'},
                       ]}
                       value={{
                         value: isEncrypt,
@@ -606,8 +606,8 @@ const CreateFieldModal = ({showCreatefield, handleCloseModal, dto, isUpdate, ind
                       name='is-unique'
                       instanceId='is-unique-select'
                       options={[
-                        {value: 'True', label: 'Unique'},
-                        {value: 'False', label: 'Not Unique'},
+                        {value: 'true', label: 'Unique'},
+                        {value: 'false', label: 'Not Unique'},
                       ]}
                       value={{
                         value: isUnique,

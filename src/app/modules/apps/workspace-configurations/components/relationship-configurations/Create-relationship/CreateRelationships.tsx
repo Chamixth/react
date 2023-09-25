@@ -354,8 +354,8 @@ const CreateRelationshipModal = ({show, handleCloseModal, isUpdate, workspaceId,
                           ]}
                         >
                           <option>Select a Secondary Relationship Type</option>
-                          <option value='HAS-ONE'>HAS-ONE</option>
-                          <option value='HAS-MANY'>HAS-MANY</option>
+                          <option value='HAS-ONE'>Has-One</option>
+                          <option value='HAS-MANY'>Has-Many</option>
                         </select>
                         {!data.secondaryRelationship && hasError && (
                       <div className='fv-plugins-message-container'>
